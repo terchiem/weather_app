@@ -9,31 +9,41 @@ Vue.component('search-form', {
 
   template: `
     <div class="search-form">
-      <input type="text" placeholder="City Name" v-model="city">
-      <select v-model="country">
-        <option value="">Select a country...</option>
-        <option v-for="(country, key, i) in countries" :value="key">{{country}}</option>
-      </select>
-      <button @click.prevent="onSubmit">Search</button>
-
-      <label>
-        F
+      <div class="searchbar">
         <input 
+          class="city-input"
+          type="text" 
+          placeholder="City Name" 
+          v-model="city"
+        >
+        <select class="country-select" v-model="country">
+          <option value="">Select a country...</option>
+          <option v-for="(country, key, i) in countries" :value="key">{{country}}</option>
+        </select>
+        <button @click.prevent="onSubmit"><i class="fa fa-search"></i></button>
+      </div>
+
+      <div class="unit-toggle">
+        <input 
+          id="fahrenheit"
           type="radio" 
           name="unit" 
           :value="true" 
           v-model="fahrenheit" 
-          @change="toggleTemp">
-      </label>
-      <label>
-        C
+          @change="toggleTemp"
+        />
+        <label for="fahrenheit">°F</label>
+
         <input 
+          id="celcius"
           type="radio" 
           name="unit" 
           :value="false" 
           v-model="fahrenheit" 
-          @change="toggleTemp">
-      </label>
+          @change="toggleTemp"
+        />
+        <label for="celcius">°C</label>
+      </div>
     </div>
   `,
   data() {
@@ -67,13 +77,16 @@ Vue.component('main-card', {
   },
   template: `
     <div class="main-card">
+      <h2 class="main-location">{{location}}</h2>
       <img 
         class="condition-lg" 
         :src="data.icon" 
         :alt="data.condition" 
       />
-      <h2>{{location}}</h2>
-      <h3 v-if="data.date">{{date}}</h3>
+      <div class="main-info">
+        <h3 class="main-day">{{day}}</h3>
+        <h5 v-if="data.date">{{date}}</h5>
+      </div>
       <div class="temp-range">
         <p class="high">{{high}} </p>
         <p class="low">{{low}}</p>
@@ -98,6 +111,12 @@ Vue.component('main-card', {
         unit = 'C';
       }
       return `${temp} °${unit}`
+    },
+    day() {
+      return format(
+        new Date(this.data.date),
+        'dddd'
+      )
     },
     date() {
       return format(

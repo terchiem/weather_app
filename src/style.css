@@ -1,0 +1,259 @@
+*,
+*:before,
+*:after {
+ -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+         box-sizing: border-box;
+}
+
+body, p,
+h1, h2,
+h3, h4, 
+h5, h6 {
+  padding: 0;
+  margin: 0;
+  color: var(--black);
+}
+
+body {
+  background-image: radial-gradient(circle, #b3ecec, #88bdbc) ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Variables*/
+:root {
+  --base-height: 500px;
+  --black: #4b4744;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper {
+  width: 900px;
+}
+
+/* =================
+     Search Form
+==================== */
+.search-form {
+  margin: 30px 60px;
+}
+.searchbar {
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+}
+.searchbar > * {
+  border: none;
+}
+.city-input {
+  padding: 10px 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.country-select {
+  border-left: 1px solid #888;
+  border-right: 1px solid #888;
+}
+.searchbar button {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: none;
+}
+.searchbar button:hover {
+  text-shadow: 1px 1px 2px #112d3241;
+  box-shadow: 1px 0 1px black inset;
+}
+
+.unit-toggle {
+  margin: 20px auto;
+  display: block;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.unit-toggle input {
+  display: none;
+}
+
+.unit-toggle input:checked + label {
+  opacity: 1;
+}
+.unit-toggle label {
+  padding: 10px 20px;
+  color: var(--black);
+  opacity: .2;
+  cursor: pointer;
+}
+.unit-toggle label:hover {
+  opacity: .5;
+}
+    
+
+/* =================
+      Forecast
+==================== */
+.forecast {
+  min-height: var(--base-height);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  align-items: flex-end;
+}
+.forecast > * {
+  border: 2px solid #112d32;
+  border-radius: 8px;
+}
+
+/* Main Card */
+.main-card {
+  min-width: 500px;
+  grid-column: 1 / -1;
+  margin: 0 120px;
+  position: relative;
+}
+.main-card h2 {
+  padding: 4px;
+  text-align: center;
+  background-color: #254e58;
+  color: white;
+}
+.main-card h3 {
+  font-size: 2rem;
+  text-align: right;
+}
+.main-info {
+  padding: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+.main-day {
+  margin-top: 20px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #999;
+}
+.main-card h5 {
+  margin-top: 8px;
+}
+.main-card .temp-range {
+  margin: 12px 40px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.main-card .high {
+  padding-right: 12px;
+  display: inline-block;
+  font-size: 3rem;
+}
+.main-card .low {
+  padding-left: 12px;
+  display: inline-block;
+  border-left: 1px solid #999;
+  font-size: 2rem;
+}
+
+/* Standard Card */
+.card h3 {
+  padding: 8px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+.card h5 {
+  padding: 4px;
+  text-align: center;
+  background-color: #254e58;
+  color: white;
+}
+.card .temp-range {
+  padding: 10px 20px;
+}
+.card .high {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #666;
+}
+.card .low {
+  padding-top: 5px;
+}
+
+/* Temps */
+.temp-range {
+  margin: 4px 10px;
+  text-align: right;
+}
+.low {
+  color: #666;
+}
+
+/* Conditions */
+.condition-sm {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+.condition-lg {
+  margin-left: 40px;
+  float: left;
+  width: 180px;
+  height: 180px;
+}
+
+.error {
+  min-height: var(--base-height);
+  border: 1px solid var(--black);
+  border-radius: 6px;
+  text-align: center;
+  line-height: var(--base-height);
+}
+
+
+@media screen and (max-width: 900px) {
+  #app {
+    align-items: flex-start;
+  }
+
+  .forecast {
+    margin: 10px 20px;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
+
+  .main-card {
+    margin: 0;
+  }
+
+  .card {
+    position: relative;
+  }
+  .card .temp-range {
+    margin: 12px 40px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .card .high {
+    padding-right: 12px;
+    display: inline-block;
+    border: none;
+  }
+  .card .low {
+    padding-left: 12px;
+    display: inline-block;
+    border-left: 1px solid #999;
+  }
+  .condition-sm {
+    margin-left: 40px;
+    float: left;
+    width: 100px;
+    height: 100px;
+  }
+}
