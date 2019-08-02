@@ -67,7 +67,11 @@ Vue.component('main-card', {
   },
   template: `
     <div class="main-card">
-      <div class="condition-lg">{{data.condition}}</div>
+      <img 
+        class="condition-lg" 
+        :src="data.icon" 
+        :alt="data.condition" 
+      />
       <h2>{{location}}</h2>
       <h3 v-if="data.date">{{date}}</h3>
       <div class="temp-range">
@@ -113,7 +117,11 @@ Vue.component('card', {
   <div class="card">
     <h5>{{date}}</h5>
     <h3>{{day}}</h3>
-    <div class="condition-sm">{{data.condition}}</div>
+    <img 
+      class="condition-sm"
+      :src="data.icon"
+      :alt="data.condition"
+    />
     <div class="temp-range">
       <p class="high">{{high}} </p>
       <p class="low">{{low}}</p>

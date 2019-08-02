@@ -1,3 +1,5 @@
+import iconMap from './weather-icons';
+
 export function separateDays(data) {
   const dayList = [];
   for(let i = 0; i < data.list.length; i+=8) {
@@ -12,7 +14,8 @@ export function createDayObject(dayData) {
     date: dayData[4].dt_txt,
     high: Math.max(...temps),
     low: Math.min(...temps),
-    condition: dayData[4].weather[0].main
+    condition: dayData[4].weather[0].main,
+    icon: iconMap[dayData[5].weather[0].icon]
   }
 }
 
