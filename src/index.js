@@ -9,6 +9,13 @@ Vue.component('search-form', {
 
   template: `
     <div class="search-form">
+      <p class="form-error" v-if="errors.length">
+        Please correct the following error(s):
+        <ul>
+          <li v-for="error in errors">{{error}}</li>
+        </ul>
+      </p>
+
       <div class="searchbar">
         <input 
           class="city-input"
@@ -50,19 +57,27 @@ Vue.component('search-form', {
     return {
       city: null,
       country: '',
-      fahrenheit: true
+      fahrenheit: true,
+      errors: []
     }
   },
 
   methods: {
     onSubmit() {
-      // validate data
-      let formData = {
-        city: this.city,
-        country: this.country
+      this.errors = [];
+      if(this.city && this.country) {
+        let formData = {
+          city: this.city,
+          country: this.country
+        }
+        this.$emit('search-city', formData)
+      } else {
+        if(!this.city) this.errors.push("City required.");
+        if(!this.country) this.errors.push("Country required.");
       }
-      this.$emit('search-city', formData)
+      
     },
+
     toggleTemp() {
       this.$emit('toggle-temp', this.fahrenheit);
     }
