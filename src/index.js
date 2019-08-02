@@ -2,6 +2,8 @@ import countries from './country-codes';
 import forecast from './test-forecast';
 import { separateDays, createDayObject, fToC } from './forecast-helpers';
 
+import { format } from 'date-fns';
+
 Vue.component('search-form', {
   props: ['countries'],
 
@@ -58,13 +60,16 @@ Vue.component('search-form', {
 })
 
 Vue.component('main-card', {
-  props: ['data', 'fahrenheit', 'location'],
+  props: {
+    data: Object,
+    fahrenheit: Boolean,
+    location: String
+  },
   template: `
     <div class="main-card">
+      <div class="condition-lg">{{data.condition}}</div>
       <h2>{{location}}</h2>
-      <p>Tomorrow</p>
-      <h3>{{data.date}}</h3>
-      <p>{{data.condition}}</p>
+      <h3 v-if="data.date">{{date}}</h3>
       <div class="temp-range">
         <p class="high">{{high}} </p>
         <p class="low">{{low}}</p>
@@ -79,7 +84,7 @@ Vue.component('main-card', {
         temp = fToC(temp);
         unit = 'C';
       }
-      return `${temp} ${unit}`
+      return `${temp} °${unit}`
     },
     low() {
       let temp = Math.round(this.data.low);
@@ -88,18 +93,27 @@ Vue.component('main-card', {
         temp = fToC(temp);
         unit = 'C';
       }
-      return `${temp} ${unit}`
+      return `${temp} °${unit}`
+    },
+    date() {
+      return format(
+        new Date(this.data.date),
+        'MMMM D'
+      )
     }
   }
 })
 
-
 Vue.component('card', {
-  props: ['data', 'fahrenheit'],
+  props: {
+    data: Object,
+    fahrenheit: Boolean
+  },
   template: `
   <div class="card">
-    <h3>{{data.date}}</h3>
-    <p>{{data.condition}}</p>
+    <h5>{{date}}</h5>
+    <h3>{{day}}</h3>
+    <div class="condition-sm">{{data.condition}}</div>
     <div class="temp-range">
       <p class="high">{{high}} </p>
       <p class="low">{{low}}</p>
@@ -114,7 +128,7 @@ Vue.component('card', {
         temp = fToC(temp);
         unit = 'C';
       }
-      return `${temp} ${unit}`
+      return `${temp} °${unit}`
     },
     low() {
       let temp = Math.round(this.data.low);
@@ -123,7 +137,19 @@ Vue.component('card', {
         temp = fToC(temp);
         unit = 'C';
       }
-      return `${temp} ${unit}`
+      return `${temp} °${unit}`
+    },
+    day() {
+      return format(
+        new Date(this.data.date),
+        'dddd'
+      )
+    },
+    date() {
+      return format(
+        new Date(this.data.date),
+        'MMMM D'
+      )
     }
   }
 })
@@ -136,7 +162,8 @@ var app = new Vue({
     mainData: null,
     forecastData: null,
     location: null,
-    fahrenheit: true
+    fahrenheit: true,
+    error: null
   },
 
   methods: {
@@ -145,13 +172,18 @@ var app = new Vue({
       this.fahrenheit = state;
     },
 
-    searchCity(data) {
-      this.location = `${data.city}, ${data.country}`;
+    async searchCity(data) {
       const url = this.formatUrl(data);
-      // fetch data from url
-      // parse jsondata
-      // set data with forecast data
-      console.log(url);
+
+      const response = await fetch(url);
+      if(response.ok) {
+        const weatherData = await response.json();
+        const parsedData = await this.parseData(weatherData);
+        this.insertData(parsedData);
+        this.error = null;
+      } else {
+        this.error = `${data.city}, ${data.country}`;
+      }
     },
 
     formatUrl(data) {
@@ -159,21 +191,20 @@ var app = new Vue({
       return encodeURI(`http://api.openweathermap.org/data/2.5/forecast?q=${data.city},${data.country}&units=imperial&APPID=${appid}`)
     },
 
-    fetchData(url) {
-      //get json from fetch
-
-    },
-
     parseData(data) {
       const days = separateDays(data);
       const forecastData = days.map(createDayObject);
-      return forecastData;
+      return {
+        data: forecastData,
+        location: `${data.city.name}, ${data.city.country}`
+      }
     },
 
-    insertData(data) {
-      const forecastData = [...data];
+    insertData(forecast) {
+      const forecastData = [...forecast.data];
       this.mainData = forecastData.shift();
       this.forecastData = forecastData;
+      this.location = forecast.location;
     },
 
     loadForecast() {

@@ -9,7 +9,7 @@ export function separateDays(data) {
 export function createDayObject(dayData) {
   const temps = dayData.map(section => parseFloat(section.main.temp));
   return {
-    date: Date(dayData[4].dt),
+    date: dayData[4].dt_txt,
     high: Math.max(...temps),
     low: Math.min(...temps),
     condition: dayData[4].weather[0].main
