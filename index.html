@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Weather App &mdash; The Odin Project</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../src/style.css">
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="wrapper">
+        <search-form 
+          :countries="countryCodes" 
+          @search-city="searchCity" 
+          @toggle-temp="toggleTemp"
+        ></search-form>
+  
+        <div class="forecast" v-if="!error">
+          <main-card 
+            :data="mainData" 
+            :location="location"
+            :fahrenheit="fahrenheit"
+          ></main-card>
+          <card 
+            v-for="(day, index) in forecastData" 
+            :key="index"
+            :data="day"
+            :fahrenheit="fahrenheit"
+          ></card>
+          
+        </div>
+        <div class="error" v-else>
+          <p>Could not find results for '{{error}}'</p>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+  <script src="https://use.fontawesome.com/729dceb01f.js"></script>
+  <script src="main.js"></script>
+</html>
