@@ -22,6 +22,7 @@ Vue.component('search-form', {
           type="text" 
           placeholder="City Name" 
           v-model="city"
+          @keyup.enter="onSubmit"
         >
         <select class="country-select" v-model="country">
           <option value="">Select a country...</option>
@@ -97,6 +98,7 @@ Vue.component('main-card', {
         class="condition-lg" 
         :src="data.icon" 
         :alt="data.condition" 
+        :title="data.condition" 
       />
       <div class="main-info">
         <h3 class="main-day">{{day}}</h3>
@@ -155,6 +157,7 @@ Vue.component('card', {
       class="condition-sm"
       :src="data.icon"
       :alt="data.condition"
+      :title="data.condition" 
     />
     <div class="temp-range">
       <p class="high">{{high}} </p>

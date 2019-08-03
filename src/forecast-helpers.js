@@ -14,7 +14,7 @@ export function createDayObject(dayData) {
     date: dayData[4].dt_txt,
     high: Math.max(...temps),
     low: Math.min(...temps),
-    condition: dayData[4].weather[0].main,
+    condition: dayData[5].weather[0].main,
     icon: iconMap[dayData[5].weather[0].icon]
   }
 }
