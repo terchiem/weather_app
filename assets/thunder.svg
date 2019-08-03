@@ -1,0 +1,51 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid meet">
+ <defs>
+  <path id="dfPlfs3AP" d="m89.25,128l-21.989998,66.570007l21.989998,0l-15.709999,48.079987l59.700005,-66.569992l-31.420006,0l22,-48.080002l-34.57,0z"/>
+  <path id="c2gbtJ8HS" d="m101,-1c0,0 0,0 0,0c0,61.200001 0,95.199997 0,102c0,0 0,0 0,0c-61.200001,0 -95.2,0 -102,0c0,0 0,0 0,0c0,-61.200001 0,-95.2 0,-102c0,0 0,0 0,0c61.200001,0 95.199997,0 102,0z"/>
+  <path id="e13veF9JPt" d="m160.25,98c0,0 0,0 0,0c0,36 0,56 0,60c0,0 0,0 0,0c-71.099998,0 -110.599998,0 -118.5,0c0,0 0,0 0,0c0,-36 0,-56 0,-60c0,0 0,0 0,0c71.099998,0 110.600006,0 118.5,0z"/>
+  <path id="a3YRQ2zH03" d="m70.25,128c0,16.570007 -13.209999,30 -29.5,30c-16.290001,0 -29.5,-13.429993 -29.5,-30c0,-16.57 13.209999,-30 29.5,-30c16.290001,0 29.5,13.43 29.5,30z"/>
+  <path id="asmrDJZWE" d="m188.75,127.75c0,16.710007 -13.820007,30.25 -30.880005,30.25c-17.049988,0 -30.869995,-13.539993 -30.869995,-30.25c0,-16.709999 13.820007,-30.25 30.869995,-30.25c17.059998,0 30.880005,13.540001 30.880005,30.25z"/>
+  <path id="a1JDZkJoGY" d="m117.25,88.5c0,25.68 -18.360001,46.5 -41,46.5c-22.639999,0 -41,-20.82 -41,-46.5c0,-25.68 18.360001,-46.5 41,-46.5c22.639999,0 41,20.82 41,46.5z"/>
+  <path id="dB8VFA7T" d="m160.25,97c0,16.019997 -13.429993,29 -30,29c-16.57,0 -30,-12.980003 -30,-29c0,-16.019997 13.43,-29 30,-29c16.570007,0 30,12.980003 30,29z"/>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="202" width="202" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_3">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-57.547726" id="svg_4" fill="#fffa5f" xlink:href="#dfPlfs3AP"/>
+  </g>
+  <g id="svg_5">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_6" fill-opacity="0" fill="#000000" xlink:href="#c2gbtJ8HS"/>
+   <g id="svg_7">
+    <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_8" stroke-opacity="0" stroke="#000000" fill-opacity="0" xlink:href="#c2gbtJ8HS"/>
+   </g>
+  </g>
+  <g id="svg_9">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_10" fill="#8f8f8f" xlink:href="#e13veF9JPt"/>
+   <g id="svg_11">
+    <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_12" stroke-opacity="0" stroke-width="1.5" stroke="#000000" fill-opacity="0" xlink:href="#e13veF9JPt"/>
+   </g>
+  </g>
+  <g id="svg_13">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_14" fill="#8f8f8f" xlink:href="#a3YRQ2zH03"/>
+   <g id="svg_15">
+    <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_16" stroke-opacity="0" stroke-width="1.5" stroke="#000000" fill-opacity="0" xlink:href="#a3YRQ2zH03"/>
+   </g>
+  </g>
+  <g id="svg_17">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_18" fill="#8f8f8f" xlink:href="#asmrDJZWE"/>
+   <g id="svg_19">
+    <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_20" stroke-opacity="0" stroke-width="1.5" stroke="#000000" fill-opacity="0" xlink:href="#asmrDJZWE"/>
+   </g>
+  </g>
+  <g id="svg_21">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_22" fill="#8f8f8f" xlink:href="#a1JDZkJoGY"/>
+  </g>
+  <g id="svg_23">
+   <use transform="matrix(0.884058, 0, 0, 0.884058, 22.5797, 23.0317)" x="-7.432377" y="-50.760841" id="svg_24" fill="#8f8f8f" xlink:href="#dB8VFA7T"/>
+  </g>
+ </g>
+</svg>
