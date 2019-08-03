@@ -213,7 +213,6 @@ var app = new Vue({
 
   methods: {
     toggleTemp(state) {
-      console.log(`temp changed to: ${state}`);
       this.fahrenheit = state;
     },
 
