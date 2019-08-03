@@ -92,7 +92,7 @@ Vue.component('main-card', {
     location: String
   },
   template: `
-    <div class="main-card">
+    <div v-if="data" class="main-card">
       <h2 class="main-location">{{location}}</h2>
       <img 
         class="condition-lg" 
@@ -102,7 +102,7 @@ Vue.component('main-card', {
       />
       <div class="main-info">
         <h3 class="main-day">{{day}}</h3>
-        <h5 v-if="data.date">{{date}}</h5>
+        <h5>{{date}}</h5>
       </div>
       <div class="temp-range">
         <p class="high">{{high}} </p>
@@ -233,7 +233,7 @@ var app = new Vue({
 
     formatUrl(data) {
       const appid = '930555d4bed3616ed708a51ed33135e9';
-      return encodeURI(`http://api.openweathermap.org/data/2.5/forecast?q=${data.city},${data.country}&units=imperial&APPID=${appid}`)
+      return encodeURI(`https://api.openweathermap.org/data/2.5/forecast?q=${data.city},${data.country}&units=imperial&APPID=${appid}`)
     },
 
     parseData(data) {
